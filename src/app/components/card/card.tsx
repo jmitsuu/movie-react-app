@@ -6,7 +6,7 @@ interface TCard {
 const urlImage = "https://image.tmdb.org/t/p/w500/";
 export default function Card({ movie }: TCard) {
  return (
-  <div className="h-full w-80 md:w-full">
+  <div className="h-full w-80 md:w-full relative transition-all scale-100 hover:scale-105 cursor-pointer">
    <img
     className="rounded-xs"
     src={`${urlImage}${movie.backdrop_path}`}
@@ -17,6 +17,11 @@ export default function Card({ movie }: TCard) {
    ) : (
     <h1 className="text-gray-200 opacity-20 font-bold text-center">No title</h1>
    )}
+   <div className=" flex items-center justify-center bg-black/80 h-8 w-8 p-2 top-2 left-1.5 rounded-full absolute">
+    <h3 className="  font-bold text-sm font-lilitas  text-yellow-500">
+     {movie.vote_average.toFixed(1)}
+    </h3>
+   </div>
   </div>
  );
 }

@@ -4,7 +4,7 @@ import { BrowserRouter as Routes } from "react-router";
 
 function App() {
  return (
-  <main className="bg-[#242424]">
+  <main className="bg-black min-h-screen">
    <section className="w-screen container mx-auto pt-5 ">
     <Routes>
      <Header />
