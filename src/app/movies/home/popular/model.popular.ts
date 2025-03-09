@@ -7,7 +7,6 @@ export function useModelPopularMovies() {
   queryKey: [cacheKey.popular],
   queryFn: () => getPopularMovies(),
  });
- console.log(Popular);
  return {
   state: { isPending },
   data: { Popular },

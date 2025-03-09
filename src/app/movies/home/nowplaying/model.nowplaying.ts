@@ -1,6 +1,7 @@
-import { cacheKey } from "@/cache/movies/cacheKey";
+
 import { useQuery } from "@tanstack/react-query";
 import { getNowPlayingMovies } from "../../services.movies";
+import { cacheKey } from "@/cache/movies/cacheKey";
 
 
 export function useModelNowPlayingMovies() {
@@ -8,7 +9,6 @@ export function useModelNowPlayingMovies() {
     queryKey: [cacheKey.nowplaying],
     queryFn: () => getNowPlayingMovies(),
   })
-  console.log(NowPlaying);
  return {
   state: {isPending},
   data: {NowPlaying},

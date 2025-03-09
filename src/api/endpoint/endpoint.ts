@@ -1,6 +1,5 @@
-export const movies = {
- trending: "trending",
- popular: "popular",
- nowplaying: "nowplaying",
- genres: "genres",
+export const EndPoint = {
+ trending: "/trending/all/day?language=pt-BR",
+ popular: "/movie/popular?language=pt-BR",
+ nowplaying: "/movie/now_playing?language=pt-BR",
 };

@@ -1,6 +1,6 @@
 export const cacheKey ={
   trending: "trending",
   popular: "popular",
-  nowplaying: "nowplaying",
+  nowplaying: "now_playing",
   genres: "genres",
 }
