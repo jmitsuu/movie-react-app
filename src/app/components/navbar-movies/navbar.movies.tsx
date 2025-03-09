@@ -1,19 +1,7 @@
 import { NavLink } from "react-router";
+import { ArrayNavbarMovies } from "./arraynavbarmovies";
 
-const ArrayNavbarMovies = [
- {
-  title: "Tendências",
-  link: "/trending",
- },
- {
-  title: "Popular",
-  link: "/popular",
- },
- {
-  title: "Assistindo Agora",
-  link: "/nowplaying",
- },
-];
+
 export default function NavbarMovies() {
  return (
   <nav className="flex justify-between items-center mt-10 py-4 w-full">
