@@ -8,11 +8,6 @@ export default function Popular() {
  return (
   <main className="flex flex-col justify-center">
    {state.isPending && <div>Loading...</div>}
-   {data.Popular?.length === 0 && (
-    <h1 className="text-4xl text-red-500">
-     Ocorreu um erro, tente novamente mais tarde...
-    </h1>
-   )}
    <InfiniteScroll
     dataLength={Number(data.Popular?.length)}
     next={actions.updatePage}

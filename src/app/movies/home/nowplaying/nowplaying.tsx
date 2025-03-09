@@ -8,11 +8,6 @@ export default function NowPlaying() {
  return (
   <main className="flex flex-col justify-center">
    {state.isPending && <div>Loading...</div>}
-   {data.NowPlaying?.length === 0 && (
-    <h1 className="text-4xl text-red-500">
-     Ocorreu um erro, tente novamente mais tarde...
-    </h1>
-   )}
    <InfiniteScroll
     dataLength={Number(data.NowPlaying?.length)}
     next={actions.updatePage}
