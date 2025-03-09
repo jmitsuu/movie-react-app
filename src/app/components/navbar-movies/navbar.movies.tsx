@@ -2,16 +2,16 @@ import { NavLink } from "react-router";
 
 const ArrayNavbarMovies = [
  {
-  title: "Trending",
-  link:'/trending'
+  title: "Tendências",
+  link: "/trending",
  },
  {
   title: "Popular",
-  link:'/popular'
+  link: "/popular",
  },
  {
   title: "Assistindo Agora",
-  link:'/nowplaying'
+  link: "/nowplaying",
  },
 ];
 export default function NavbarMovies() {
@@ -20,7 +20,15 @@ export default function NavbarMovies() {
    <ul className="flex justify-between text-4xl">
     {ArrayNavbarMovies.map((NavMovies) => {
      return (
-      <NavLink to={NavMovies.link} key={NavMovies.title} className="text-white mx-2 cursor-pointer underline underline-offset-8">
+      <NavLink
+       to={NavMovies.link}
+       key={NavMovies.title}
+       className={({ isActive }: { isActive: boolean }) =>
+        ` mx-2 cursor-pointer underline underline-offset-8  ${
+         isActive ? "text-red-500 " : "text-white "
+        }`
+       }
+      >
        {NavMovies.title}
       </NavLink>
      );

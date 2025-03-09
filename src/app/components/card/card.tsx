@@ -15,7 +15,7 @@ export default function Card({ movie }: TCard) {
    {movie.title ? (
     <h1 className="text-red-500 font-bold text-center">{movie.title}</h1>
    ) : (
-    <h1 className="text-gray-200 opacity-20 font-bold text-center">No title</h1>
+    <h1 className="text-red-500 opacity-20 font-bold text-center">No title</h1>
    )}
    <div className=" flex items-center justify-center bg-black/80 h-8 w-8 p-2 top-2 left-1.5 rounded-full absolute">
     <h3 className="  font-bold text-sm font-lilitas  text-yellow-500">

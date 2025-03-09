@@ -6,7 +6,6 @@ export function useModelMoviesTrending() {
   queryKey: [cacheKey.trending],
   queryFn: () => getTrendingMovies(),
  });
- console.log(Trending);
  return {
   state: { isPending },
   data: { Trending },

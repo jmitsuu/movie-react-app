@@ -1,7 +1,7 @@
 export const linksNavigation = [
  {
   name: "Home",
-  url: "/",
+  url: "/trending",
   icon: "",
  },
  {
@@ -10,8 +10,8 @@ export const linksNavigation = [
   icon: "",
  },
  {
-  name: "Filmes",
-  url: "/movies",
+  name: "Favoritos",
+  url: "/favorites",
   icon: "",
  },
 ];

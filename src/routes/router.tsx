@@ -1,15 +1,19 @@
 import { Routes, Route } from "react-router";
 import Home from "../app/movies/home/home";
-import TvShows from "@/app/movies/tvshows/tvshows";
-import Movies from "@/app/movies/movies/movies";
 import Trending from "@/app/movies/home/trending/trending";
-import { lazy } from "react";
+import Popular from "@/app/movies/home/popular/popular";
+import NowPlaying from "@/app/movies/home/nowplaying/nowplaying";
+import TvShows from "@/app/movies/tvshows/tvshows";
+import Favorites from "@/app/movies/favorites/favorites";
+// import { lazy } from "react";
 
 export function PageRoutes() {
- const Popular = lazy(() => import("@/app/movies/home/popular/popular"));
- const NowPlaying = lazy(
-  () => import("@/app/movies/home/nowplaying/nowplaying")
- );
+//  const Popular = lazy(() => import("@/app/movies/home/popular/popular"));
+//  const NowPlaying = lazy(
+//   () => import("@/app/movies/home/nowplaying/nowplaying")
+//  );
+//  const TvShows = lazy(() => import("@/app/movies/tvshows/tvshows"));
+//  const Favorites = lazy(() => import("@/app/movies/favorites/favorites"));
  return (
   <Routes>
    <Route path="/" element={<Home />}>
@@ -19,7 +23,7 @@ export function PageRoutes() {
     <Route path="nowplaying" element={<NowPlaying />} />
    </Route>
    <Route path="/tvshows" element={<TvShows />} />
-   <Route path="/movies" element={<Movies />} />
+   <Route path="/favorites" element={<Favorites />} />
   </Routes>
  );
 }
