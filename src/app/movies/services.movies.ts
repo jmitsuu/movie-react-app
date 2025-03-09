@@ -5,10 +5,12 @@ import { EndPoint } from "@/api/endpoint/endpoint";
 const API_URL = import.meta.env.VITE_API_URL;
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
-export const getTrendingMovies = async (): Promise<TMovie[]> => {
+export const getTrendingMovies = async (newPage:number): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
-   `${API_URL + EndPoint.trending}&api_key=${API_TOKEN}`
+   `${API_URL + EndPoint.trending}&api_key=${API_TOKEN}`,{
+    params:{page:newPage}
+   }
   );
   return data.results;
  } catch (error) {
@@ -17,10 +19,13 @@ export const getTrendingMovies = async (): Promise<TMovie[]> => {
  }
 };
 
-export const getPopularMovies = async (): Promise<TMovie[]> => {
+export const getPopularMovies = async (newPage:number): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
-   `${API_URL + EndPoint.popular}&api_key=${API_TOKEN}`
+   `${API_URL + EndPoint.popular}&api_key=${API_TOKEN}`,
+   {
+    params:{page:newPage}
+   }
   );
   return data.results;
  } catch (error) {
@@ -29,10 +34,13 @@ export const getPopularMovies = async (): Promise<TMovie[]> => {
  }
 };
 
-export const getNowPlayingMovies = async (): Promise<TMovie[]> => {
+export const getNowPlayingMovies = async (newPage:number): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
-   `${API_URL + EndPoint.nowplaying}&api_key=${API_TOKEN}`
+   `${API_URL + EndPoint.nowplaying}&api_key=${API_TOKEN}`,
+   {
+    params:{page:newPage}
+   }
   );
   return data.results;
  } catch (error) {

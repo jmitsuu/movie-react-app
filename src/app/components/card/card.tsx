@@ -9,7 +9,7 @@ export default function Card({ movie }: TCard) {
   <div className="h-full w-80 md:w-full relative transition-all scale-100 hover:scale-105 cursor-pointer">
    <img
     className="rounded-xs"
-    src={`${urlImage}${movie.backdrop_path}`}
+    src={`${urlImage}${movie?.backdrop_path}`}
     alt=""
    />
    {movie.title ? (
@@ -19,7 +19,7 @@ export default function Card({ movie }: TCard) {
    )}
    <div className=" flex items-center justify-center bg-black/80 h-8 w-8 p-2 top-2 left-1.5 rounded-full absolute">
     <h3 className="  font-bold text-sm font-lilitas  text-yellow-500">
-     {movie.vote_average.toFixed(1)}
+     {movie.vote_average ? movie?.vote_average.toFixed(1): 0}
     </h3>
    </div>
   </div>
