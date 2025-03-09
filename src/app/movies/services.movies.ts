@@ -15,3 +15,27 @@ export const getTrendingMovies = async (): Promise<TMovie[]> => {
     return [];
   }
 };
+
+export const getPopularMovies = async (): Promise<TMovie[]> => {
+  try {
+    const { data } = await axios.get<{ results: TMovie[] }>(
+      `${API_URL}/movie/popular?language=pt-BR&api_key=${API_TOKEN}`
+    );
+    return data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export const getNowPlayingMovies = async (): Promise<TMovie[]> => {
+  try {
+    const { data } = await axios.get<{ results: TMovie[] }>(
+      `${API_URL}/movie/now_playing?language=pt-BR&api_key=${API_TOKEN}`
+    );
+    return data.results;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

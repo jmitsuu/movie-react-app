@@ -1,6 +1,7 @@
 import Header from "./global/components/header/header";
 import { PageRoutes } from "./routes/router";
 import { BrowserRouter as Routes } from "react-router";
+import ScrollToTop from "./routes/scrollToUp";
 
 function App() {
  return (
@@ -9,6 +10,7 @@ function App() {
     <Routes>
      <Header />
      <PageRoutes />
+     <ScrollToTop />
     </Routes>
    </section>
   </main>

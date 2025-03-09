@@ -13,7 +13,7 @@ export default function Card({ movie }: TCard) {
     alt=""
    />
    {movie.title ? (
-    <h1 className="text-gray-200 font-bold text-center">{movie.title}</h1>
+    <h1 className="text-red-500 font-bold text-center">{movie.title}</h1>
    ) : (
     <h1 className="text-gray-200 opacity-20 font-bold text-center">No title</h1>
    )}
