@@ -9,7 +9,7 @@ export default function Card({ movie }: TCard) {
  return (
   <div className="h-full w-72 md:w-full relative transition-all cursor-pointer hover:scale-95  ">
    <div className="h-full w-full group flex items-center justify-center absolute hover:border border-blue-500 hover:bg-black/70 rounded-md scale-90 hover:scale-105 transition-all z-50">
-    <h1 className="hidden group-hover:flex items-center opacity-0 group-hover:opacity-100 transition duration-700 text-xl z-50 uppercase text-blue-600 text-center">
+    <h1 className="hidden group-hover:flex items-center opacity-0 font-bold font-Mont group-hover:opacity-100 transition duration-700 text-xl z-50 uppercase text-blue-600 text-center">
      Explorar <MdArrowCircleUp className="text-xl text-center" />
     </h1>
    </div>
