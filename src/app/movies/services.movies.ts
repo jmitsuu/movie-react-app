@@ -56,7 +56,6 @@ export const getMovieById = async (id: number): Promise<TMovie | undefined> => {
   const { data } = await axios.get(
    `${API_URL + EndPoint.findMovie + id}?language=pt-BR&api_key=${API_TOKEN}`
   );
-  console.log(data, "inside api");
   return data;
  } catch (error) {
   if (error) {

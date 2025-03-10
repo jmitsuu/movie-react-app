@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useModelInfoMovie } from "./model.infomovie";
+import { FaRegHeart } from "react-icons/fa";
 import mockimage from "@/assets/images/1.webp";
 const urlImage = "https://image.tmdb.org/t/p/original/";
 export default function InfoMovie() {
@@ -31,10 +32,14 @@ export default function InfoMovie() {
        ? data.MovieById?.overview
        : "Desculpe! Não foi adicionada uma descrição até o momento"}
      </p>
-     <div className=" h-20 w-40 mt-10 flex items-center">
-      <Button className="w-60 h-20 rounded-xs bg-white text-black text-3xl cursor-pointer hover:bg-gray-100 ">
+     <div className=" h-20  mt-10 flex gap-x-2 items-center ">
+      <Button className="md:w-60 w-44 h-20 rounded-xs bg-white text-black text-3xl cursor-pointer hover:bg-gray-100 ">
        PLAY
       </Button>
+      <FaRegHeart
+       onClick={() => {}}
+       className="bg-white z-50 h-20 w-20 p-5 rounded-xs cursor-pointer  hover:bg-gray-100"
+      />
      </div>
      <h2 className="mt-10 text-xl text-white">{data.MovieById?.tagline}</h2>
     </div>
