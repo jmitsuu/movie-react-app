@@ -6,7 +6,7 @@ import {MdMenu } from "react-icons/md";
 
 export default function Header() {
  return (
-  <header className="h-16 w-screen  flex items-center justify-between container mx-auto gap-x-2">
+  <header className="h-16 w-screen md:px-0 px-4 flex items-center justify-between container mx-auto gap-x-2">
    <div className=" flex items-center">
     <h1 className="text-white">LOGO</h1>{" "}
     <div className="relative flex items-center">
