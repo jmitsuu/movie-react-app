@@ -6,7 +6,7 @@ import ScrollToTop from "./routes/scrollToUp";
 function App() {
  return (
   <main className="bg-black min-h-screen">
-   <section className="w-screen  container mx-auto pt-5 ">
+   <section className="w-screen  container mx-auto pt-5">
     <Routes>
      <Header />
      <PageRoutes />

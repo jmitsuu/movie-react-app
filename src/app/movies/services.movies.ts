@@ -5,11 +5,12 @@ import { EndPoint } from "@/api/endpoint/endpoint";
 const API_URL = import.meta.env.VITE_API_URL;
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
-export const getTrendingMovies = async (newPage:number): Promise<TMovie[]> => {
+export const getTrendingMovies = async (newPage: number): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
-   `${API_URL + EndPoint.trending}&api_key=${API_TOKEN}`,{
-    params:{page:newPage}
+   `${API_URL + EndPoint.trending}&api_key=${API_TOKEN}`,
+   {
+    params: { page: newPage },
    }
   );
   return data.results;
@@ -19,12 +20,12 @@ export const getTrendingMovies = async (newPage:number): Promise<TMovie[]> => {
  }
 };
 
-export const getPopularMovies = async (newPage:number): Promise<TMovie[]> => {
+export const getPopularMovies = async (newPage: number): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
    `${API_URL + EndPoint.popular}&api_key=${API_TOKEN}`,
    {
-    params:{page:newPage}
+    params: { page: newPage },
    }
   );
   return data.results;
@@ -34,17 +35,35 @@ export const getPopularMovies = async (newPage:number): Promise<TMovie[]> => {
  }
 };
 
-export const getNowPlayingMovies = async (newPage:number): Promise<TMovie[]> => {
+export const getNowPlayingMovies = async (
+ newPage: number
+): Promise<TMovie[]> => {
  try {
   const { data } = await axios.get<{ results: TMovie[] }>(
    `${API_URL + EndPoint.nowplaying}&api_key=${API_TOKEN}`,
    {
-    params:{page:newPage}
+    params: { page: newPage },
    }
   );
   return data.results;
  } catch (error) {
   console.log(error);
   return [];
+ }
+};
+export const getMovieById = async (id: number): Promise<TMovie | undefined> => {
+ try {
+  const { data } = await axios.get(
+   `${API_URL + EndPoint.findMovie + id}?language=pt-BR&api_key=${API_TOKEN}`
+  );
+  console.log(data, "inside api");
+  return data;
+ } catch (error) {
+  if (error) {
+   alert(
+    "Descrição não localizada na API. Voce será redirecionado para pagina inicial"
+   );
+   window.location.href = "/trending";
+  }
  }
 };

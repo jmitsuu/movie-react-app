@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router";
 import Home from "../app/movies/home/home";
 import Trending from "@/app/movies/home/trending/trending";
 import { lazy, Suspense } from "react";
+// import { InfoMovie } from "@/app/movies/info-movie/infomovie";
 
 export function PageRoutes() {
  const Popular = lazy(() => import("@/app/movies/home/popular/popular"));
@@ -10,6 +11,7 @@ export function PageRoutes() {
  );
  const TvShows = lazy(() => import("@/app/movies/tvshows/tvshows"));
  const Favorites = lazy(() => import("@/app/movies/favorites/favorites"));
+ const InfoMovie = lazy(() => import("@/app/movies/info-movie/infomovie"));
  return (
   <Suspense
    fallback={
@@ -25,6 +27,7 @@ export function PageRoutes() {
      <Route path="popular" element={<Popular />} />
      <Route path="nowplaying" element={<NowPlaying />} />
     </Route>
+    <Route path="/movie/:id" element={<InfoMovie />} />
     <Route path="/tvshows" element={<TvShows />} />
     <Route path="/favorites" element={<Favorites />} />
    </Routes>

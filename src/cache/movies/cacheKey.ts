@@ -3,4 +3,5 @@ export const cacheKey ={
   popular: "popular",
   nowplaying: "now_playing",
   genres: "genres",
+  findMovie:"moviebyid"
 }
