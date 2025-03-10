@@ -2,6 +2,8 @@ import { NavLink } from "react-router";
 import { Input } from "../../../components/ui/input";
 import { linksNavigation } from "./model-header";
 import iconProfile from "@/assets/images/iconProfile.webp";
+import {MdMenu } from "react-icons/md";
+
 export default function Header() {
  return (
   <header className="h-16 w-screen  flex items-center justify-between container mx-auto gap-x-2">
@@ -21,7 +23,7 @@ export default function Header() {
        key={link.name}
        to={`${link.url}`}
        className={({ isActive }: { isActive: boolean }) =>
-        `  cursor-pointer  text-xl uppercase hover:text-red-500 transition-all ${
+        `md:flex hidden  cursor-pointer  text-xl uppercase hover:text-red-500 transition-all ${
          isActive ? "text-red-500 underline  underline-offset-8 " : "text-white"
         }`
        }
@@ -31,7 +33,8 @@ export default function Header() {
      );
     })}
    </nav>
-   <div className="flex justify-center items-center border p-2 gap-1 rounded-xl border-red-500">
+   <MdMenu className="text-white mr-2 text-3xl cursor-pointer md:hidden flex"/>
+   <div className="md:flex justify-center items-center border p-2 gap-1 rounded-xl border-red-500 hidden">
     <img src={iconProfile} alt="img-profile" className="h-6 " />
     <h1 className="text-white">John Doe</h1>
    </div>
