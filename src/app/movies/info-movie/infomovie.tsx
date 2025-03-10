@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { useModelInfoMovie } from "./model.infomovie";
 import { FaRegHeart } from "react-icons/fa";
 import mockimage from "@/assets/images/1.webp";
+import { IoArrowBackCircleSharp } from "react-icons/io5";
+import { NavLink } from "react-router";
 const urlImage = "https://image.tmdb.org/t/p/original/";
 export default function InfoMovie() {
  const { state, data } = useModelInfoMovie();
@@ -9,7 +11,10 @@ export default function InfoMovie() {
   <main className="mt-10 w-full container mx-auto">
    {state.isPending && <div>Loading...</div>}
    <div className="md:relative ">
-    <div className="w-full h-full md:flex hidden bg-black/50 z-50 absolute"></div>
+  <NavLink to={"/"}>
+  <IoArrowBackCircleSharp className="z-50 text-white text-5xl absolute md:flex hidden top-2 left-2 cursor-pointer hover:text-slate-100" />
+  </NavLink>
+    <div className="w-full h-full md:flex hidden bg-black/50 z-40 absolute"></div>
     <div className="p-8 m-4 rounded-full  bg-black/80 z-50 absolute right-4 border-2 border-yellow-500">
      <h2 className="font-bold md:text-9xl text-4xl font-lilitas  text-yellow-500">
       {data.MovieById?.vote_average.toFixed(1)}
@@ -33,12 +38,12 @@ export default function InfoMovie() {
        : "Desculpe! Não foi adicionada uma descrição até o momento"}
      </p>
      <div className=" h-20  mt-10 flex gap-x-2 items-center ">
-      <Button className="md:w-60 w-44 h-20 rounded-xs bg-white text-black text-3xl cursor-pointer hover:bg-gray-100 ">
+      <Button className="md:w-60 w-44 h-20 rounded-xs bg-white text-black text-3xl cursor-pointer hover:bg-gray-100  hover:text-blue-500">
        PLAY
       </Button>
       <FaRegHeart
        onClick={() => {}}
-       className="bg-white z-50 h-20 w-20 p-5 rounded-xs cursor-pointer  hover:bg-gray-100"
+       className="bg-white z-50 h-20 w-20 p-5 rounded-xs cursor-pointer  hover:bg-gray-100 hover:text-rose-500"
       />
      </div>
      <h2 className="mt-10 text-xl text-white">{data.MovieById?.tagline}</h2>
