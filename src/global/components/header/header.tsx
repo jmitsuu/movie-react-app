@@ -4,21 +4,27 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import iconProfile from "@/assets/images/iconProfile.webp";
 import { MenuMobile } from "./manu-mobile/menu-mobile";
 import { useModelMenuHeader } from "./model-header";
+import minilogo from "@/assets/images/minilogo.png";
 
 export default function Header() {
  const { data, actions } = useModelMenuHeader();
+
  return (
   <header className="h-16 w-screen md:px-0 px-4 flex items-center justify-between container mx-auto gap-x-2">
-   <div className=" flex items-center">
-    <h1 className="text-white">LOGO</h1>{" "}
+   <div className=" flex items-center relative">
+    <img src={minilogo} className="h-10 "  alt="logo header"/>
     <div className="relative flex items-center">
      <Input
+     id="enter"
       value={data.findMovie}
       onChange={actions.handleInputChange}
       className=" border-none focus:border-b z-50 text-xl w-40 ml-4 left-4 text-gray-200 focus-visible:ring-[1px] "
       placeholder="procurar"
      />
-     <FaMagnifyingGlass onClick={actions.searchMovie}  className="text-white size-4 absolute right-2 cursor-pointer z-50" />
+     <FaMagnifyingGlass
+      onClick={actions.searchMoviePush}
+      className="text-white size-4 absolute right-2 cursor-pointer z-50"
+     />
     </div>
    </div>
    <nav className="flex lg:gap-x-10">

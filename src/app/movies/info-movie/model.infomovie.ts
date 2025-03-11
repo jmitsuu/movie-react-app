@@ -10,12 +10,13 @@ export function useModelInfoMovie() {
   queryKey: [cacheKey.findMovie],
   queryFn: () => getMovieById(Number(id)),
  });
+ console.log(MovieById);
  const incrFavoriteMovie = (fav: TMovie) => {
-  const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");  
-  const movieExists = favorites.findIndex((movie: TMovie) => movie.id === fav.id);
-  console.log(movieExists)
-  if (movieExists >= 0) return; 
-
+  const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+  const movieExists = favorites.findIndex(
+   (movie: TMovie) => movie.id === fav.id
+  );
+  if (movieExists >= 0) return;
   favorites.push(fav);
   localStorage.setItem("favorites", JSON.stringify(favorites));
  };

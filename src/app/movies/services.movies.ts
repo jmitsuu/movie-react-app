@@ -54,7 +54,9 @@ export const getNowPlayingMovies = async (
 export const getMovieById = async (id: number): Promise<TMovie | undefined> => {
  try {
   const { data } = await axios.get(
-   `${API_URL + EndPoint.findMovie + id}?language=pt-BR&api_key=${API_TOKEN}`
+   `${
+    API_URL + EndPoint.findMovieByID + id
+   }?language=pt-BR&api_key=${API_TOKEN}`
   );
   return data;
  } catch (error) {
@@ -64,5 +66,19 @@ export const getMovieById = async (id: number): Promise<TMovie | undefined> => {
    );
    window.location.href = "/trending";
   }
+ }
+};
+export const searchMovie = async (title: string): Promise<TMovie[]> => {
+ try {
+  const { data } = await axios.get<{ results: TMovie[] }>(
+   `${
+    API_URL + EndPoint.searchMovie + title
+   }&include_adult=false&language=pt-BR&api_key=${API_TOKEN}`
+  );
+  // console.log(data.results, title)
+  return data.results;
+ } catch (error) {
+  console.log(error);
+  return [];
  }
 };
