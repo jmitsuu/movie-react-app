@@ -6,7 +6,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { NavLink } from "react-router";
 const urlImage = "https://image.tmdb.org/t/p/original/";
 export default function InfoMovie() {
- const { state, data } = useModelInfoMovie();
+ const { state, data, actions } = useModelInfoMovie();
  return (
   <main className="mt-10 w-full container mx-auto">
    {state.isPending && <div>Loading...</div>}
@@ -42,7 +42,7 @@ export default function InfoMovie() {
        PLAY
       </Button>
       <FaRegHeart
-       onClick={() => {}}
+       onClick={()=>{actions.incrFavoriteMovie(data?.MovieById)}}
        className="bg-white z-50 h-20 w-20 p-5 rounded-xs cursor-pointer  hover:bg-gray-100 hover:text-rose-500"
       />
      </div>
