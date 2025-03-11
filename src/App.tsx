@@ -2,6 +2,7 @@ import Header from "./global/components/header/header";
 import { PageRoutes } from "./routes/router";
 import { BrowserRouter as Routes } from "react-router";
 import ScrollToTop from "./routes/scrollToUp";
+import { ModalSearch } from "./global/components/header/modal-search/modal-search";
 
 function App() {
  return (
@@ -9,6 +10,7 @@ function App() {
    <section className="w-screen  container mx-auto pt-5">
     <Routes>
      <Header />
+     <ModalSearch />
      <PageRoutes />
      <ScrollToTop />
     </Routes>
