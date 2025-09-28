@@ -2,6 +2,7 @@ import LayoutCard from "@/layouts/layout.card";
 import { useModelMoviesTrending } from "./model.trending";
 import Card from "@/app/components/card/card";
 import InfiniteScroll from "react-infinite-scroll-component";
+import LazyCardsLoading from "@/layouts/LazyCardsLoading";
 export default function Trending() {
  const { state, data, actions } = useModelMoviesTrending();
  return (
@@ -13,11 +14,15 @@ export default function Trending() {
     hasMore={true}
     loader={state.isPending && <div>Loading...</div>}
    >
-    <LayoutCard>
-     {data.Trending?.map((movie) => {
-      return <Card key={movie.id} movie={movie} />;
-     })}
-    </LayoutCard>
+    {state.isLoading ? (
+     <LazyCardsLoading />
+    ) : (
+     <LayoutCard>
+      {data.Trending?.map((movie) => {
+       return <Card key={movie.id} movie={movie} />;
+      })}
+     </LayoutCard>
+    )}
    </InfiniteScroll>
   </main>
  );

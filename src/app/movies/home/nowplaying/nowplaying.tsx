@@ -2,6 +2,7 @@ import Card from "@/app/components/card/card";
 import LayoutCard from "@/layouts/layout.card";
 import { useModelNowPlayingMovies } from "./model.nowplaying";
 import InfiniteScroll from "react-infinite-scroll-component";
+import LazyCardsLoading from "@/layouts/LazyCardsLoading";
 
 export default function NowPlaying() {
  const { state, data, actions } = useModelNowPlayingMovies();
@@ -14,11 +15,15 @@ export default function NowPlaying() {
     hasMore={true}
     loader={state.isPending && <div>Loading...</div>}
    >
-    <LayoutCard>
-     {data.NowPlaying?.map((movie) => {
-      return <Card key={movie.id} movie={movie} />;
-     })}
-    </LayoutCard>
+    {state.isLoading ? (
+     <LazyCardsLoading />
+    ) : (
+     <LayoutCard>
+      {data.NowPlaying?.map((movie) => {
+       return <Card key={movie.id} movie={movie} />;
+      })}
+     </LayoutCard>
+    )}
    </InfiniteScroll>
   </main>
  );
