@@ -8,14 +8,13 @@ export default function Popular() {
  const { state, data, actions } = useModelPopularMovies();
  return (
   <main className="flex flex-col justify-center">
-   {state.isPending && <div>Loading...</div>}
    <InfiniteScroll
     dataLength={Number(data.Popular?.length)}
     next={actions.updatePage}
     hasMore={true}
-    loader={state.isPending && <div>Loading...</div>}
+    loader={state.isPending && <LazyCardsLoading />}
    >
-    {state.isLoading ? (
+    {state.isLoading || state.isPending ? (
      <LazyCardsLoading />
     ) : (
      <LayoutCard>

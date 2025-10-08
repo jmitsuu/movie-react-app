@@ -6,9 +6,9 @@ import { useScrollPagination } from "@/global/hooks/useScrollPagination";
 export function useModelPopularMovies() {
  const { isPending, data: Popular, isLoading } = useQuery({
   queryKey: [cacheKey.popular],
-  queryFn: () => getPopularMovies(data.page),
+  queryFn: () => getPopularMovies(state.page),
  });
- const { data, action } = useScrollPagination({
+ const { data, action, state } = useScrollPagination({
   cache: cacheKey.popular,
   dataQuery: Popular,
  });

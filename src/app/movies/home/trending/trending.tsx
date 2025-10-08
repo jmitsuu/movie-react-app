@@ -7,14 +7,13 @@ export default function Trending() {
  const { state, data, actions } = useModelMoviesTrending();
  return (
   <main className="flex flex-col justify-center w-full z-50">
-   {state.isPending && <div>Loading...</div>}
    <InfiniteScroll
     dataLength={Number(data.Trending?.length)}
     next={actions.updatePage}
     hasMore={true}
-    loader={state.isPending && <div>Loading...</div>}
+    loader={state.isPending &&  <LazyCardsLoading />}
    >
-    {state.isLoading ? (
+    {state.isLoading || state.isPending ? (
      <LazyCardsLoading />
     ) : (
      <LayoutCard>

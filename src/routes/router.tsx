@@ -12,11 +12,15 @@ export function PageRoutes() {
  const TvShows = lazy(() => import("@/app/movies/tvshows/tvshows"));
  const Favorites = lazy(() => import("@/app/movies/favorites/favorites"));
  const InfoMovie = lazy(() => import("@/app/movies/info-movie/infomovie"));
+
  return (
   <Suspense
    fallback={
-    <div className="h-screen w-full flex items-center justify-center text-4xl text-slate-400">
-     Carregando..
+    <div className="min-h-screen  flex items-center justify-center">
+     <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto"></div>
+      <p className="mt-4 text-gray-600 dark:text-gray-400">Loading movies...</p>
+     </div>
     </div>
    }
   >

@@ -8,7 +8,7 @@ export default function LazyCardsLoading() {
      key={i}
      className="animate-pulse h-full w-72 md:w-full relative transition-all cursor-pointer hover:scale-95 "
     >
-     <div className="w-96 h-[209px]">
+     <div className="w-60 h-[209px]">
       {" "}
       <div className="h-40 bg-gray-300 rounded-xl"></div>
       <p className="text-center text-gray-300 rounded mt-2">Carregando</p>

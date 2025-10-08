@@ -4,11 +4,15 @@ import { cacheKey } from "@/cache/movies/cacheKey";
 import { useScrollPagination } from "@/global/hooks/useScrollPagination";
 
 export function useModelNowPlayingMovies() {
- const { isPending, data: NowPlaying, isLoading } = useQuery({
+ const {
+  isPending,
+  data: NowPlaying,
+  isLoading,
+ } = useQuery({
   queryKey: [cacheKey.nowplaying],
-  queryFn: () => getNowPlayingMovies(data.page),
+  queryFn: () => getNowPlayingMovies(state.page),
  });
- const { data, action } = useScrollPagination({
+ const { data, action, state } = useScrollPagination({
   cache: cacheKey.nowplaying,
   dataQuery: NowPlaying,
  });
