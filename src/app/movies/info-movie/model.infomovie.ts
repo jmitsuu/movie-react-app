@@ -4,15 +4,21 @@ import { getMovieById } from "../services.movies";
 import { useParams } from "react-router";
 import { TMovie } from "../movie.type";
 import { toast } from "sonner";
+import { useEffect } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function useModelInfoMovie() {
  const { id } = useParams();
-
- const { isPending, data: MovieById } = useQuery({
-  queryKey: [cacheKey.findMovie],
+ const queryClient = useQueryClient();
+ const {
+  isPending,
+  data: MovieById,
+  isLoading,
+  isError,
+ } = useQuery({
+  queryKey: [cacheKey.findMovie, id],
   queryFn: () => getMovieById(Number(id)),
  });
- console.log(MovieById);
  const incrFavoriteMovie = (fav: TMovie | undefined) => {
   const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const movieExists = favorites.findIndex(
@@ -24,8 +30,13 @@ export function useModelInfoMovie() {
   localStorage.setItem("favorites", JSON.stringify(favorites));
  };
 
+ useEffect(() => {
+  return () => {
+   queryClient.removeQueries({ queryKey: ["movie"] });
+  };
+ }, [id, queryClient]);
  return {
-  state: { isPending },
+  state: { isPending, isLoading, isError },
   data: { MovieById },
   actions: { incrFavoriteMovie },
  };

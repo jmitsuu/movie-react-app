@@ -4,30 +4,57 @@ import { FaRegHeart } from "react-icons/fa";
 import mockimage from "@/assets/images/1.webp";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { NavLink } from "react-router";
-const urlImage = "https://image.tmdb.org/t/p/original/";
+const urlImage = "https://image.tmdb.org/t/p/original";
 export default function InfoMovie() {
  const { state, data, actions } = useModelInfoMovie();
+ if (state.isLoading || state.isError) {
+  return (
+   <div className="min-h-screen bg-gradient-to-br flex items-center justify-center">
+    <div className="text-center">
+     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto"></div>
+     {state.isError ? (
+      <div>
+       <p className="mt-4 text-gray-300 dark:text-gray-400">
+        O Filme consultado ainda não possui informações...
+       </p>
+       <NavLink to={"/"} className="text-blue-500 hover:underline">
+        Voltar para a página inicial
+       </NavLink>
+      </div>
+     ) : (
+      <p className="mt-4 text-gray-600 dark:text-gray-400">Loading movie...</p>
+     )}
+    </div>
+   </div>
+  );
+ }
+
  return (
   <main className="mt-10 w-full container mx-auto">
    {state.isPending && <div>Loading...</div>}
    <div className="md:relative ">
-  <NavLink to={"/"}>
-  <IoArrowBackCircleSharp className="z-50 text-white text-5xl absolute md:flex hidden top-2 left-2 cursor-pointer hover:text-slate-100" />
-  </NavLink>
+    <NavLink to={"/"}>
+     <IoArrowBackCircleSharp className="z-50 text-white text-5xl absolute md:flex hidden top-2 left-2 cursor-pointer hover:text-slate-100" />
+    </NavLink>
     <div className="w-full h-full md:flex hidden bg-black/50 z-40 absolute"></div>
     <div className="p-8 m-4 rounded-full  bg-black/80 z-50 absolute right-4 border-2 border-yellow-500">
      <h2 className="font-bold md:text-9xl text-4xl font-lilitas  text-yellow-500">
       {data.MovieById?.vote_average.toFixed(1)}
      </h2>
     </div>
-    {data.MovieById?.backdrop_path ? (
-     <img
-      src={urlImage + `${data.MovieById?.backdrop_path}`}
-      className="w-full lg:h-full md:h-[550px] container mx-auto"
-     />
-    ) : (
-     <img src={mockimage} alt="fake-img" className="w-full container mx-auto" />
+    {data.MovieById?.backdrop_path === null ? (
+        <img
+        src={mockimage}
+        className="w-full lg:h-full md:h-[550px] container mx-auto"
+       />
+    ):(
+       <img
+     src={urlImage + `${data.MovieById?.backdrop_path}`}
+     className="w-full lg:h-full md:h-[550px] container mx-auto"
+    />
     )}
+   
+
     <div className="md:absolute top-0 md:my-40 lg:w-[700px] md:w-[400px] z-50 h-full text-pretty p-4">
      <h1 className="text-6xl font-bold uppercase  text-white">
       {data.MovieById?.title}
@@ -42,7 +69,9 @@ export default function InfoMovie() {
        PLAY
       </Button>
       <FaRegHeart
-       onClick={()=>{actions.incrFavoriteMovie(data?.MovieById)}}
+       onClick={() => {
+        actions.incrFavoriteMovie(data?.MovieById);
+       }}
        className="bg-white z-50 h-20 w-20 p-5 rounded-xs cursor-pointer  hover:bg-gray-100 hover:text-rose-500"
       />
      </div>

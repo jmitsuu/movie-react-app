@@ -61,10 +61,10 @@ export const getMovieById = async (id: number): Promise<TMovie | undefined> => {
   return data;
  } catch (error) {
   if (error) {
-   alert(
-    "Descrição não localizada na API. Voce será redirecionado para pagina inicial"
-   );
-   window.location.href = "/trending";
+  //  alert(
+  //   "Descrição não localizada na API. Voce será redirecionado para pagina inicial"
+  //  );
+  //  window.location.href = "/trending";
   }
  }
 };
